@@ -1,0 +1,104 @@
+<div class="showonsm">
+    <div class="row">
+      <div class="col">
+        <h1>Trending Now</h1>
+      </div>
+      <hr style="border: 1px solid #0d6efd" />
+    </div>
+  
+    <div
+      id="carouselExampleControlsone"
+      class="carousel slide"
+      data-bs-ride="carousel"
+      data-bs-interval="false"
+    >
+      <div class="carousel-inner">
+        {% for i in range(0, 5) %}
+        <div class="carousel-item {% if i == 0 %} active {% endif %}">
+          <div class="row">
+            {% for j in range(0, 2) %}
+            <div class="col-sm-6">
+              <div class="card">
+                <a href="{{url_for('details', movie_id=trending[i*4+j].id)}}">
+                  <img
+                    src="https://image.tmdb.org/t/p/w500{{trending[i*4+j].poster_path}}"
+                    class="card-img-top img-fluid"
+                    alt="..."
+                  />
+                </a>
+  
+                <div class="card-body">
+                  {%if trending[i*4+j].title %}
+                  <p class="card-text">{{trending[i*4+j].title}}</p>
+                  {% else %}
+                  <p class="card-text">{{trending[i*4+j].name}}</p>
+  
+                  {% endif %}
+                  <button
+                    type="submit"
+                    class="btn btn-primary bookmark-button remove-button"
+                    id="bookmark"
+                    data-movie-id="{{ trending[i*4+j].id }}"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+  
+        <script>
+          $(".bookmark-button").click(function () {
+            const movieId = $(this).data("movie-id");
+            const btn = $(this);
+            $.ajax({
+              type: "POST",
+              url: `/watchlist/${movieId}`,
+              success: function (data) {
+                if (btn.hasClass("btn-danger")) {
+                  btn.removeClass("btn-danger");
+                  btn.addClass("btn-primary");
+                  btn.find("i").removeClass("fa-minus").addClass("fa-plus");
+                } else {
+                  btn.removeClass("btn-primary");
+                  btn.addClass("btn-danger");
+                  btn.find("i").removeClass("fa-plus").addClass("fa-minus");
+                }
+              },
+            });
+          });
+          $(".remove-button").click(function () {
+            const movieId = $(this).data("movie-id");
+            const btn = $(this);
+            $.ajax({
+              type: "POST",
+              url: `/watchlist/${movieId}/delete`,
+              success: function (data) {},
+            });
+          });
+        </script>
+      </div>
+  
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleControlsone"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleControlsone"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>

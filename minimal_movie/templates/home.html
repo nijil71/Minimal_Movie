@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        @font-face {
+            font-family: 'typewriter';
+            src: url('C:\Users\nijil\OneDrive\Desktop\newgit\minimal_movie\elegant_typewriter\ELEGANT TYPEWRITER Bold.ttf');
+        }
+        body{
+            background-color: #212529;
+            color: #ffffff;
+        }
+        /* make the container the center of the body */
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        /* make the h1 centered */
+        h1{
+            text-align: center;
+        }
+        /* add typewriter animation to the h1 */
+        h1{
+            overflow: hidden;
+            border-right: 3px solid #ffffff;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            font-family: 'typewriter';
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        /* make the animation */
+        @keyframes typing{
+            from{width: 0;}
+            to{width: 100%;}
+        }
+        @keyframes blink-caret{
+            from, to{border-color: transparent;}
+            50%{border-color: #ffffff;}
+        }
+        .btn-primary{
+            background-color: #ffffff;
+            color: #212529;
+            border: none;
+        }
+
+        .btn-primary:hover{
+            color: #ffffff;
+            border: none;
+        }
+
+        .d-grid{
+            margin-top: 20px;
+        }
+        /*make buttons side by side*/
+        .d-grid .btn{
+            width: 50%;
+            margin-left: 150px;
+        }
+        /*make buttons side by side*/
+        .d-grid .btn + .btn{
+            margin-top: 10px;
+        }
+        /* @media (min-width: 576px){
+            .d-grid .btn{
+                width: 50%;
+            }
+            .d-grid .btn + .btn{
+                margin-top: 0;
+            }
+        } */
+        @media screen and (max-width: 576px){
+            .d-grid .btn{
+                width: 100%;
+                margin-left: 0;
+            }
+            .d-grid .btn + .btn{
+                margin-top: 10px;
+            }
+        }
+
+        /*make buttons appear only after the text */
+        /* .d-grid{
+            opacity: 0;
+            animation: appear 3s forwards;
+        }
+        /*make the animation */
+        /* @keyframes appear{
+            0%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        } */ 
+        /*add animation to the h1 */
+        /* h1{
+            animation: animate 1s ease-in-out infinite;
+        }
+        /* make the animation */
+        /* @keyframes animate{
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }  */
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome To Minimal Movies</h1>
+                <!--create two buttons login and register below the h1 tag-->
+                <div class="d-grid gap-2">
+                    <a href="{{url_for('login')}}" class="btn btn-primary">Login</a>
+                    <a href="" class="btn btn-primary">Register</a>
+
+            </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>
+
+
